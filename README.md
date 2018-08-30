@@ -1,6 +1,6 @@
 # 瀑布流布局和懒加载
 
-预览地址：https://f0rl.github.io/waterfall-lazyload.html
+预览地址：https://f0rl.github.io/waterfall-lazyload/
 ### 懒加载原理
 设置一个隐藏元素，只有当滑动到此元素可见时，才加载后续资源。
 可以减轻服务器的压力，而且可以让加载好的页面更快地呈现在用户面前（用户体验好）。
