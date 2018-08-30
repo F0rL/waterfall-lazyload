@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>懒加载</title>
+  <style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .container:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .container img {
+    float: left;
+    width: 50%;
+  }
+  </style>
+</head>
+<body>
+<div class="container">
+  <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+    <img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif" alt="1" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+</div>
+  <script>
+    start()
+    
+    $(window).on('scroll', function(){
+       start()
+    })
+    
+    // 故意设置了延时看效果
+    function start(){
+       $('.container img').not('[data-isLoaded]').each(function(){
+         var $node = $(this)
+         if( isShow($node) ){
+           setTimeout(function(){
+             loadImg($node)
+           }, 500)        
+        }
+      })
+    }
+
+    function isShow($node){
+      return $node.offset().top <= $(window).height() + $(window).scrollTop()
+    }
+
+    function loadImg($img){
+      $img.attr('src', $img.attr('data-src'))
+      $img.attr('data-isLoaded', 1)
+    }   
+  </script>
+</body>
+</html>
